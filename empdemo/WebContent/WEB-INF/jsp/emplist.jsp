@@ -1,3 +1,4 @@
+<%@page import="com.neuedu.entity.User"%>
 <%@page import="com.neuedu.entity.Emp"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -105,9 +106,27 @@
 				</p>
 			</div>
 		</div>
+		<%
+			User user = (User)session.getAttribute("user");
+		%>
 		<div id="footer">
 			<div id="footer_bg">
 			ABC@126.com
+				<span style="float:right;">
+					<%
+						if(user != null){
+							out.print("欢迎:"+user.getUsername());
+					%>
+					<a href="exit.do" style="text-decoration:none;color:#FFFFFF;">退出</a>
+					<%
+						}else{
+					%>
+					<a href="loginview.do" style="text-decoration:none;color:#FFFFFF;">亲,请登录</a>
+					<a href="registerview.do" style="text-decoration:none;color:#FFFFFF;">注册新用户</a>
+					<%
+						}
+					%>
+				</span>
 			</div>
 		</div>
 	</div>
