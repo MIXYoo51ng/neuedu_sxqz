@@ -33,9 +33,9 @@
 			}
 		}
 		if (isusername && ispassword) {
-			document.getElementById("sub").removeAttribute("disabled");
+			$("#sub").removeAttr("disabled");
 		}else{
-			document.getElementById("sub").setAttribute("disabled","disabled");
+			$("#sub").attr("disabled","disabled");
 		}
 	}
 </script>

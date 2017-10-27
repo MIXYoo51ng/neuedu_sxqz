@@ -6,6 +6,20 @@
 	<title>regist</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/style2.css" />
+	<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		function checkUsername(){
+			var username = $("#username").val();
+			var reg = new RegExp(/^[a-zA-Z]{1}[0-9a-zA-Z]{5,11}$/);
+			var boo = reg.test(username);
+			if (boo) {
+				location.href = "register.do";
+			}else{
+				$("#checkUsername").html("首字母必须是英文,长度为6~12位");
+				$("#checkUsername").css("color","red");
+			}
+		}
+	</script>
 </head>
 <body>
 		<div id="wrap">
@@ -39,7 +53,8 @@
 									用户名:
 								</td>
 								<td valign="middle" align="left">
-									<input type="text" class="inputgri" name="username" />
+									<input type="text" class="inputgri" name="username" id="username" onblur="checkUsername();"/>
+									<span id="checkUsername"></span>
 								</td>
 							</tr>
 							<tr>
