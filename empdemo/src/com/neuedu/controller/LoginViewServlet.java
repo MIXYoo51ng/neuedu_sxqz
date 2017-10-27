@@ -1,8 +1,6 @@
 package com.neuedu.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -28,9 +26,6 @@ public class LoginViewServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Date date = new Date();
-		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-		req.setAttribute("now", f.format(date));
 		Cookie[] cookies = req.getCookies();
 		Map<String, Cookie> cookiemap = CookieUtil.cookieToMap(cookies);
 		Cookie cookie = cookiemap.get("username");

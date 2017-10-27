@@ -13,7 +13,7 @@
 					<div id="header">
 						<div id="rightheader">
 							<p>
-								2009/11/20
+								${now}
 								<br />
 							</p>
 						</div>
@@ -89,7 +89,7 @@
 							</tr>
 						</table>
 						<p>
-							<input type="submit" class="button" value="Submit &raquo;" />
+							<input type="submit" class="button" value="Submit &raquo;" disabled="disabled"/>
 						</p>
 					</form>
 				</div>

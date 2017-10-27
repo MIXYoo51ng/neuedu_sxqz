@@ -4,7 +4,7 @@ import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
 import javax.servlet.annotation.WebListener;
 
-@WebListener
+/*@WebListener*/
 public class AttributeListenerTest implements ServletContextAttributeListener{
 	
 	@Override

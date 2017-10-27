@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 			<div id="header">
 				<div id="rightheader">
 					<p>
-						<%out.print(request.getAttribute("now"));%>
+						${now}
 						<br />
 					</p>
 				</div>
@@ -37,7 +38,7 @@
 				<table class="table">
 					<tr class="table_header">
 						<td>
-							ID
+							Num
 						</td>
 						<td>
 							Name
@@ -52,80 +53,60 @@
 							Operation
 						</td>
 					</tr>
-					<%
-						List<Emp> emplist = (List<Emp>)request.getAttribute("emplist");
-					%>
-					<%
-						for(int i = 0; i < emplist.size(); i++){
-							if(i % 2 == 0){
-					%>
-					<tr class="row1">
-						<td>
-							<%out.print(emplist.get(i).getId()); %>
-						</td>
-						<td>
-							<%out.print(emplist.get(i).getName()); %>
-						</td>
-						<td>
-							<%out.print(emplist.get(i).getSalary()); %>
-						</td>
-						<td>
-							<%out.print(emplist.get(i).getJob()); %>
-						</td>
-						<td>
-							<a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
-						</td>
-					</tr>
-					<%
-							}else{
-					%>
-					<tr class="row2">
-						<td>
-							<%out.print(emplist.get(i).getId()); %>
-						</td>
-						<td>
-							<%out.print(emplist.get(i).getName()); %>
-						</td>
-						<td>
-							<%out.print(emplist.get(i).getSalary()); %>
-						</td>
-						<td>
-							<%out.print(emplist.get(i).getJob()); %>
-						</td>
-						<td>
-							<a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
-						</td>
-					</tr>
-					<%
-							}
-						}
-					%>
+					<c:forEach items="${emplist}" var="emp" varStatus="i">
+						<c:if test="${i.index % 2 == 0}" var="index">
+							<tr class="row1">
+								<td>
+									${i.index+1}
+								</td>
+								<td>
+									${emp.name}
+								</td>
+								<td>
+									${emp.salary}
+								</td>
+								<td>
+									${emp.job}
+								</td>
+								<td>
+									<a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
+								</td>
+							</tr>
+						</c:if>
+						<c:if test="${!index}">
+							<tr class="row2">
+								<td>
+									${i.index+1}
+								</td>
+								<td>
+									${emp.name}
+								</td>
+								<td>
+									${emp.salary}
+								</td>
+								<td>
+									${emp.job}
+								</td>
+								<td>
+									<a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 				</table>
 				<p>
 					<input type="button" class="button" value="Add Employee" onclick="location='addEmp.html'"/>
 				</p>
 			</div>
 		</div>
-		<%
-			User user = (User)session.getAttribute("user");
-		%>
 		<div id="footer">
 			<div id="footer_bg">
 			ABC@126.com
 				<span style="float:right;">
-					<%
-						if(user != null){
-							out.print("欢迎:"+user.getUsername());
-					%>
-					<a href="exit.do" style="text-decoration:none;color:#FFFFFF;">退出</a>
-					<%
-						}else{
-					%>
-					<a href="loginview.do" style="text-decoration:none;color:#FFFFFF;">亲,请登录</a>
-					<a href="registerview.do" style="text-decoration:none;color:#FFFFFF;">注册新用户</a>
-					<%
-						}
-					%>
+					<c:if test="${sessionScope.user != null}">
+						欢迎,${user.username}
+						<a href="exit.do" style="text-decoration:none;color:#FFFFFF;">退出</a>
+					</c:if>
 				</span>
 			</div>
 		</div>
