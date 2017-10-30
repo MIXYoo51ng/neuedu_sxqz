@@ -5,8 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
 <script type="text/javascript">
-	//判断浏览器对XMLHttpRequest的支持,否则创建ie的对象
+	/* //判断浏览器对XMLHttpRequest的支持,否则创建ie的对象
 	function getXmlHttpRequest(){
 		var xhr = null;
 		if((typeof XMLHttpRequest)!='undefined'){
@@ -51,12 +52,24 @@
 		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		//发生送请求
 		xhr.send("username=中文&password=1234");
+	} */
+	
+	function jqueryajax(){
+		$.ajax({
+			type:"post",
+			url:"testajax.do",
+			data:"username=admin&password=1234",
+			contentType:"application/x-www-form-urlencoded",
+			complete:function(xhr,issuccess){
+				
+			}
+		});
 	}
 	
 </script>
 </head>
 <body>
-	<button type="button" onclick="sendgetajax();">发送getajax</button>
+	<button type="button" onclick="jqueryajax();">发送getajax</button>
 	<button type="button" onclick="sendpostajax();">发送postajax</button>
 </body>
 </html>
