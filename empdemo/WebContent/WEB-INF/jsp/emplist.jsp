@@ -69,7 +69,7 @@
 									${emp.job}
 								</td>
 								<td>
-									<a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
+									<a href="emplist.html">delete emp</a>&nbsp;<a href="updateempview.do?id=${emp.id}">update emp</a>
 								</td>
 							</tr>
 						</c:if>
@@ -88,7 +88,7 @@
 									${emp.job}
 								</td>
 								<td>
-									<a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
+									<a href="emplist.html">delete emp</a>&nbsp;<a href="updateempview.do?id=${emp.id}">update emp</a>
 								</td>
 							</tr>
 						</c:if>
@@ -104,7 +104,8 @@
 			ABC@126.com
 				<span style="float:right;">
 					<c:if test="${sessionScope.user != null}">
-						欢迎,${user.username}
+						欢迎,${sessionScope.user.username}
+						<img src="${sessionScope.user.headimgpath}" style="width:16px;height:16px;border-radius:50%;">
 						<a href="exit.do" style="text-decoration:none;color:#FFFFFF;">退出</a>
 					</c:if>
 				</span>

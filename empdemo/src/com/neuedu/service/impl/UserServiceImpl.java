@@ -13,4 +13,10 @@ public class UserServiceImpl implements UserService{
 		return userdao.selectUserByUsername(username);
 	}
 
+	@Override
+	public int insertUser(User user) {
+		UserDao userdao = new UserDaoImpl();
+		return userdao.insertUser(user);
+	}
+
 }

@@ -24,7 +24,8 @@ public class UserDaoImpl implements UserDao{
 			psta.setString(1, username);
 			rs = psta.executeQuery();
 			while(rs.next()){
-				user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
+				user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password")
+						,rs.getString("realname"),rs.getString("sex"),rs.getString("headimgpath"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,6 +39,27 @@ public class UserDaoImpl implements UserDao{
 			}
 		}
 		return user;
+	}
+
+	@Override
+	public int insertUser(User user) {
+		Connection conn = null;
+		PreparedStatement psta = null;
+		int i = 0;
+		try {
+			conn = DataSourceUtil.getConnection();
+			String sql = "insert into e_user values(null,?,?,?,?,?)";
+			psta = conn.prepareStatement(sql);
+			psta.setString(1, user.getUsername());
+			psta.setString(2, user.getPassword());
+			psta.setString(3, user.getRealname());
+			psta.setString(4, user.getSex());
+			psta.setString(5, user.getHeadimgpath());
+			i = psta.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
 	}
 
 }

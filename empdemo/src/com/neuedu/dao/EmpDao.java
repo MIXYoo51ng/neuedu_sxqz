@@ -12,4 +12,11 @@ public interface EmpDao {
 	 */
 	public List<Emp> selectEmpList();
 	
+	/**
+	 * ¸ù¾Ýid²éÑ¯emp
+	 * @param id
+	 * @return
+	 */
+	public Emp selectEmpById(int id);
+	
 }

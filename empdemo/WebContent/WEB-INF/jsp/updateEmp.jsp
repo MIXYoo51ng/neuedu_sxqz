@@ -14,7 +14,7 @@
 				<div id="header">
 					<div id="rightheader">
 						<p>
-							2009/11/20
+							${now}
 							<br />
 						</p>
 					</div>
@@ -40,7 +40,7 @@
 								id:
 							</td>
 							<td valign="middle" align="left">
-								1
+								${emp.id}
 							</td>
 						</tr>
 						<tr>
@@ -48,7 +48,7 @@
 								Name:
 							</td>
 							<td valign="middle" align="left">
-								<input type="text" class="inputgri" name="name" value="zhangshan"/>
+								<input type="text" class="inputgri" name="name" value="${emp.name}"/>
 							</td>
 						</tr>
 						<tr>
@@ -56,7 +56,7 @@
 								Salary:
 							</td>
 							<td valign="middle" align="left">
-								<input type="text" class="inputgri" name="salary" value="20000"/>
+								<input type="text" class="inputgri" name="salary" value="${emp.salary}"/>
 							</td>
 						</tr>
 						<tr>
@@ -64,7 +64,7 @@
 								Job:
 							</td>
 							<td valign="middle" align="left">
-								<input type="text" class="inputgri" name="age" value="20"/>
+								<input type="text" class="inputgri" name="job" value="${emp.job}"/>
 							</td>
 						</tr>
 					</table>

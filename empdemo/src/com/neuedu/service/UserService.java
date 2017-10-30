@@ -11,4 +11,10 @@ public interface UserService {
 	 */
 	public User selectUserByUsername(String username);
 	
+	/**
+	 * ²åÈëuserÊı¾İ
+	 * @param user
+	 */
+	public int insertUser(User user);
+	
 }

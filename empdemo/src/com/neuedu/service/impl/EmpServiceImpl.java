@@ -15,4 +15,10 @@ public class EmpServiceImpl implements EmpService{
 		return empdao.selectEmpList();
 	}
 
+	@Override
+	public Emp selectEmpById(int id) {
+		EmpDao empdao = new EmpDaoImpl();
+		return empdao.selectEmpById(id);
+	}
+
 }

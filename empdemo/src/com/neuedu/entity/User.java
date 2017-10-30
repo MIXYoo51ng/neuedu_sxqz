@@ -9,16 +9,22 @@ public class User implements Serializable{
 	private Integer id;
 	private String username;
 	private String password;
+	private String realname;
+	private String sex;
+	private String headimgpath;
 	
 	public User() {
 		super();
 	}
 	
-	public User(Integer id, String username, String password) {
+	public User(Integer id, String username, String password, String realname, String sex, String headimgpath) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.realname = realname;
+		this.sex = sex;
+		this.headimgpath = headimgpath;
 	}
 	
 	public Integer getId() {
@@ -38,6 +44,27 @@ public class User implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getHeadimgpath() {
+		return headimgpath;
+	}
+	public void setHeadimgpath(String headimgpath) {
+		this.headimgpath = headimgpath;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }

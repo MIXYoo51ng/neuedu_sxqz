@@ -32,7 +32,9 @@ public class RequestFilter implements Filter{
 		//获得请求uri,判断是否以指定字符串结尾,对不需要登录的请求进行放行
 		String uri = req.getRequestURI();
 		if (uri.endsWith("loginview.do") || uri.endsWith("login.do") ||
-				uri.endsWith("registerview.do") || uri.endsWith("register.do")) {
+				uri.endsWith("registerview.do") || uri.endsWith("register.do") ||
+				uri.endsWith("checkusername.do") || uri.endsWith("checkcode.do") || 
+				uri.endsWith("checkcodenum.do")) {
 			chain.doFilter(request, response);
 		}else{
 			HttpSession session = req.getSession();
