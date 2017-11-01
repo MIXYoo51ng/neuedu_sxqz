@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	值:${testparam}
-	值1:${testparam1}
+	<form action="fileup.do" method="post" enctype="multipart/form-data">
+		文件:<input type="file" name="file"><br>
+		username:<input type="text" name="username"><br>
+		<input type="submit">
+	</form>
 </body>
 </html>

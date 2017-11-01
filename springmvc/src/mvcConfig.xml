@@ -10,11 +10,46 @@
    <!-- 告诉springmvc组件在哪 -->
    <context:component-scan base-package="com.neuedu.controller"></context:component-scan>
    
+   <!-- 主动加载类,加载一些工具类 -->
+   <mvc:annotation-driven></mvc:annotation-driven>
+   
+   <!-- 处理静态资源 -->
+   <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>   
+   <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>   
+   <mvc:resources location="/img/" mapping="/img/**"></mvc:resources>   
+   
    <!-- 视图解析器 -->
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 配置前缀以及后缀 -->
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
-    </bean>
+   </bean>
+   
+   <!-- 配置springmvc上传文件的支持 -->
+   <bean id="multipartResolver" 
+   		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<!-- 设置编码集 -->
+		<property name="defaultEncoding" value="utf-8"/>  
+		<!-- 临时内存最大值设置  --> 
+		<property name="maxInMemorySize" value="10240"/>  
+		<!-- 最大文件大小，-1为不限制大小  --> 
+		<property name="maxUploadSize" value="-1"/>
+	</bean>
+       
+    <!-- 配置拦截器 -->
+   	<mvc:interceptors>
+   		<mvc:interceptor>
+   			<!-- 对哪些请求进行拦截 -->
+   			<mvc:mapping path="/test1.do"/>
+   			<!-- 配置放行的请求 -->
+   			<mvc:exclude-mapping path="/test.do"/>
+   			<bean class="com.neuedu.interceptor.TestInterceptor1"></bean>
+   		</mvc:interceptor>
+   		<!-- <mvc:interceptor>
+   			对哪些请求进行拦截
+   			<mvc:mapping path="/test.do"/>
+   			<bean class="com.neuedu.interceptor.TestInterceptor2"></bean>
+   		</mvc:interceptor> -->
+   	</mvc:interceptors>
        
 </beans>

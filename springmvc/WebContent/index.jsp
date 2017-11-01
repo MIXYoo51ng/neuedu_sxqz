@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	值:${testparam}
-	值1:${testparam1}
+	<form action="test.do" method="post">
+		username:<input type="text" name="username"><br>
+		<input type="submit">
+	</form>
 </body>
 </html>

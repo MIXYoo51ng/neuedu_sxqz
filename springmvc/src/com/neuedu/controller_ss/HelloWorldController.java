@@ -1,4 +1,4 @@
-package com.neuedu.controller;
+package com.neuedu.controller_ss;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

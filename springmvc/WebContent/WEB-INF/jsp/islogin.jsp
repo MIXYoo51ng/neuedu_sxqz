@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	值:${testparam}
-	值1:${testparam1}
+	${islogin}
 </body>
 </html>
