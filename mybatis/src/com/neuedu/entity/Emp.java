@@ -8,10 +8,11 @@ public class Emp {
 	private String job;
 	private Integer deptno;
 	
+	private Dept dept;
+	
 	public Emp() {
 		super();
 	}
-	
 	public Emp(Integer empno, String ename, Integer salary, String job, Integer deptno) {
 		super();
 		this.empno = empno;
@@ -21,6 +22,15 @@ public class Emp {
 		this.deptno = deptno;
 	}
 	
+	public Emp(Integer empno, String ename, Integer salary, String job, Integer deptno, Dept dept) {
+		super();
+		this.empno = empno;
+		this.ename = ename;
+		this.salary = salary;
+		this.job = job;
+		this.deptno = deptno;
+		this.dept = dept;
+	}
 	public Integer getEmpno() {
 		return empno;
 	}
@@ -51,11 +61,15 @@ public class Emp {
 	public void setDeptno(Integer deptno) {
 		this.deptno = deptno;
 	}
-	
+	public Dept getDept() {
+		return dept;
+	}
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
 	@Override
 	public String toString() {
 		return "Emp [empno=" + empno + ", ename=" + ename + ", salary=" + salary + ", job=" + job + ", deptno=" + deptno
-				+ "]";
+				+ ", dept=" + dept + "]";
 	}
-	
 }

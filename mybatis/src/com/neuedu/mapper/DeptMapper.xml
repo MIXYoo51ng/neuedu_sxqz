@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.neuedu.dao.DeptDao">
+
+	<resultMap type="com.neuedu.entity.Dept" id="DeptEmp">
+		<result column="deptno" property="deptno"/>
+		<result column="dname" property="dname"/>
+		<result column="location" property="location"/>
+		<collection property="emplist" ofType="com.neuedu.entity.Emp">
+			<result column="empno" property="empno"/>
+			<result column="ename" property="ename"/>
+			<result column="salary" property="salary"/>
+			<result column="job" property="job"/>
+			<result column="deptno" property="deptno"/>
+		</collection>
+	</resultMap>
+
+	<select id="selectDeptEmp" resultMap="DeptEmp">
+		select * from dept d inner join emp e on d.deptno = e.deptno
+	</select>
+	
+</mapper>

@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     </environments>
     <mappers>
     	<mapper resource="com/neuedu/mapper/EmpMapper.xml"/>
+    	<mapper resource="com/neuedu/mapper/DeptMapper.xml"/>
     	<!-- <package name="com.neuedu.dao"/> -->
     </mappers>
 </configuration>

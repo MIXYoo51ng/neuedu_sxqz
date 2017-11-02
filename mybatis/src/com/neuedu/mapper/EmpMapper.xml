@@ -4,16 +4,53 @@
 
 <mapper namespace="com.neuedu.dao.EmpDao">
 
+	<!-- <resultMap type="E" id="empresultMap">
+		<id column="empno" property="e_empno"/>
+		<result column="ename" property="e_ename"/>
+		<result column="salary" property="e_salary"/>
+		<result column="job" property="e_job"/>
+		<result column="deptno" property="e_deptno"/>
+	</resultMap> -->
+
+	<resultMap type="com.neuedu.entity.Emp" id="EmpDept">
+		<result column="empno" property="empno"/>
+		<result column="ename" property="ename"/>
+		<result column="salary" property="salary"/>
+		<result column="job" property="job"/>
+		<result column="deptno" property="deptno"/>
+		<association property="dept" javaType="com.neuedu.entity.Dept">
+			<result column="deptno" property="deptno"/>
+			<result column="dname" property="dname"/>
+			<result column="location" property="location"/>
+		</association>
+	</resultMap>
+
+	<!-- 查询出员工信息并且包含部门信息 -->
+	<!-- 在实际项目中绝对不允许写select * -->
+	<select id="selectEmpDept" resultMap="EmpDept">
+		select * from emp e inner join dept d on e.deptno = d.deptno
+	</select>
+
+
 	<select id="selectAll" resultType="E">
 		select * from emp
 	</select>
 	
-	<select id="selectEmpByEmpno" parameterType="int" resultType="E">
-		select * from emp where empno = #{empno}
+	<!-- <select id="selectEmpByEmpno" resultMap="empresultMap">
+		select * from emp where empno = #{asdfsdfdsf}
+	</select> -->
+	
+	<select id="selectEmpByEname" resultType="E">
+		select * from emp where ename like '${param1}%'
 	</select>
 	
+	<!-- 根据员工编号和姓名查询 
+	<select id="selectEmpByEnameEno" resultMap="empresultMap">
+		select * from emp where empno = #{empno} and ename = #{ename}
+	</select> -->
+	
 	<insert id="addEmp" parameterType="E">
-		insert into emp values(#{empno},#{ename},#{salary},#{job},#{deptno});
+		insert into emp values(#{e_empno},#{e_ename},#{e_salary},#{e_job},#{e_deptno});
 	</insert>
 	
 	<delete id="deleteEmpByEmpno" parameterType="int">
