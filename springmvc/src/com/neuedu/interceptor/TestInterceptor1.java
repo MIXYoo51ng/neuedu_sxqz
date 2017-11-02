@@ -25,8 +25,6 @@ public class TestInterceptor1 implements HandlerInterceptor{
 			throws Exception {
 		System.out.println("拦截器1的postHandle方法");
 	}
-	
-
 	/**
 	 * 在controller执行之前执行这个方法,如果返回值为true,则springmvc继续向下执行
 	 */
@@ -35,5 +33,4 @@ public class TestInterceptor1 implements HandlerInterceptor{
 		System.out.println("拦截器1的preHandle方法");
 		return true;
 	}
-
 }

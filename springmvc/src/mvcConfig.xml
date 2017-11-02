@@ -40,16 +40,14 @@
    	<mvc:interceptors>
    		<mvc:interceptor>
    			<!-- 对哪些请求进行拦截 -->
-   			<mvc:mapping path="/test1.do"/>
+   			<mvc:mapping path="/test.do"/>
    			<!-- 配置放行的请求 -->
-   			<mvc:exclude-mapping path="/test.do"/>
    			<bean class="com.neuedu.interceptor.TestInterceptor1"></bean>
    		</mvc:interceptor>
-   		<!-- <mvc:interceptor>
-   			对哪些请求进行拦截
+   		<mvc:interceptor>
    			<mvc:mapping path="/test.do"/>
    			<bean class="com.neuedu.interceptor.TestInterceptor2"></bean>
-   		</mvc:interceptor> -->
+   		</mvc:interceptor>
    	</mvc:interceptors>
        
 </beans>

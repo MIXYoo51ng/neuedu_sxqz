@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 文档头,有dtd形式也有xsd形式的,保证这个xml中哪些标签是合法，哪些不合法 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- mybatis的根标签,所有配置必须写在里面 -->
+<configuration>
+    <!-- 引入jdbc.properties配置文件,mybatis会读这个文件 -->
+    <properties resource="jdbc.properties"></properties>   
+    <!-- 开启mybatis提供的功能 -->
+    <settings>
+    	<!-- 开启日志功能 -->
+    	<setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <typeAliases>
+    	<!-- 配置实体bean,mapper中可以简写 -->
+    	<typeAlias type="com.neuedu.entity.Emp" alias="E"/>
+    </typeAliases>
+    <environments default="development">
+    	<!-- id名为多套配置的唯一标识 -->
+        <environment id="development">
+        	<!-- 让mybatis以jdbc的方式处理事务 -->
+            <transactionManager type="JDBC" />
+            <!-- 配置数据源 ,POOLED代表使用mybatis自己提供的连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+    	<mapper resource="com/neuedu/mapper/EmpMapper.xml"/>
+    	<!-- <package name="com.neuedu.dao"/> -->
+    </mappers>
+</configuration>
